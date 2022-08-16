@@ -14,7 +14,7 @@ function login() {
     
     if (email==="" || password==="")
     return 
-    location.href = 'inicio.html'
+    location.href = 'index.html'
 
 }
 
