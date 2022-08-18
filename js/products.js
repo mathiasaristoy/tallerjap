@@ -7,7 +7,7 @@ function showProductsList(products){
         <div class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
-                    <img src="` + product.image + `" alt="product image" class="img-thumbnail">
+                    <img src="${product.image}" alt="product image" class="img-thumbnail">
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
