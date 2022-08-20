@@ -12,3 +12,20 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", ()=> {
+
+    let email= sessionStorage.getItem("email");
+    if(!email){
+        alert("Debe iniciar sesión para poder continuar en el sitio")
+        location.href = "login.html";
+    }else{
+        document.getElementById("email").innerHTML = email;
+    }
+    
+})
+
+
+    

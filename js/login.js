@@ -1,3 +1,4 @@
+
 function login() {
 
     let email = document.getElementById('email').value;
@@ -11,12 +12,16 @@ function login() {
         document.getElementById('password').classList.add('is-invalid');
     }
     else { document.getElementById('password').classList.remove('is-invalid'); }
-    
-    if (email==="" || password==="")
-    return 
-    location.href = 'index.html'
 
+    
+
+    if (email === "" || password === "")
+        return
+        sessionStorage.setItem('email', 'mail');
+        location.href = 'index.html'
+    
 }
+
 
 
 
@@ -24,5 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('btn').addEventListener('click', () => {
         login();
+
     })
+
+    
 })
+
+
