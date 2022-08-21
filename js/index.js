@@ -21,10 +21,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     if(!email){
         alert("Debe iniciar sesión para poder continuar en el sitio")
         location.href = "login.html";
-    }else{
-        document.getElementById("email").innerHTML = email;
-    }
-    
+    }    
 })
 
 
