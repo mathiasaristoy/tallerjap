@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
     if(!email){
         alert("Debe iniciar sesión para poder continuar en el sitio")
         location.href = "login.html";
+        
     }    
+    document.getElementById('dropdownMenuButton1').innerHTML = email;
 })
 
 

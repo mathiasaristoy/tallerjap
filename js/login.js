@@ -18,7 +18,8 @@ function login() {
     if (email === "" || password === "")
         return
         sessionStorage.setItem('email', email);
-        location.href = 'index.html'
+        location.href = 'index.html';
+        
     
 }
 

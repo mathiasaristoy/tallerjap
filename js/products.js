@@ -28,7 +28,9 @@ function showProductsList(products){
 
 
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCTS_URL+101+EXT_TYPE).then(function(resultObj){
+    let catID = localStorage.getItem("catID")
+
+    getJSONData(PRODUCTS_URL+catID+EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             showProductsList(resultObj.data.products);
