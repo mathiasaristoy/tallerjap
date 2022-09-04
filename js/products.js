@@ -1,7 +1,7 @@
 MUST_LOGIN
 
-const ORDER_ASC_BY_PRICE = "AZ";
-const ORDER_DESC_BY_PRICE = "ZA";
+const ORDER_ASC_BY_PRICE = "1-9";
+const ORDER_DESC_BY_PRICE = "9-1";
 const ORDER_BY_COUNT = "Cant.";
 let products = [];
 let currentSortCriteria = undefined;
