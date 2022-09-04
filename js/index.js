@@ -13,18 +13,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 });
 
-
-
-document.addEventListener("DOMContentLoaded", ()=> {
-
-    let email= sessionStorage.getItem("email");
-    if(!email){
-        alert("Debe iniciar sesión para poder continuar en el sitio")
-        location.href = "login.html";
-        
-    }    
-    document.getElementById('dropdownMenuButton1').innerHTML = email;
-})
-
+MUST_LOGIN
+  
 
     

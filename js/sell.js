@@ -1,3 +1,5 @@
+MUST_LOGIN
+
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;

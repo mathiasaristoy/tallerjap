@@ -6,7 +6,7 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
-function sortCategories(criteria, array){
+function sortProducts(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
@@ -78,7 +78,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
         currentCategoriesArray = categoriesArray;
     }
 
-    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+    currentCategoriesArray = sortProducts(currentSortCriteria, currentCategoriesArray);
 
     //Muestro las categorías ordenadas
     showCategoriesList();
@@ -141,3 +141,5 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+MUST_LOGIN
