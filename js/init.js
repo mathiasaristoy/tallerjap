@@ -41,7 +41,7 @@ let getJSONData = function(url){
     });
 }
 
-const MUST_LOGIN = document.addEventListener("DOMContentLoaded", ()=> {
+ document.addEventListener("DOMContentLoaded", ()=> {
 
   let email= sessionStorage.getItem("email");
   if(!email){

@@ -1,5 +1,3 @@
-MUST_LOGIN
-
 const ORDER_ASC_BY_PRICE = "1-9";
 const ORDER_DESC_BY_PRICE = "9-1";
 const ORDER_BY_COUNT = "Cant.";
@@ -36,8 +34,12 @@ function sortProducts(criteria, products) {
     return result;
 }
 
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
 
-function showProductsList() {
+function showProductInfo() {
     let htmlContentToAppend = "";
 
     for (let i = 0; i < products.length; i++) {
@@ -47,7 +49,8 @@ function showProductsList() {
             ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice))) {
 
             htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+            <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+        
             <div class="row">
                 <div class="col-3">
                     <img src="${product.image}" alt="product image" class="img-thumbnail">
@@ -81,7 +84,7 @@ function sortAndShowProducts(sortCriteria, productList) {
     products = sortProducts(currentSortCriteria, products);
 
 
-    showProductsList();
+    showProductInfo();
 }
 
 
@@ -92,8 +95,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL + catID + EXT_TYPE).then(function (resultObj) {
         if (resultObj.status === "ok") {
             products = resultObj.data.products;
-            showProductsList();
-            showProductsList(resultObj.data.products);
+            showProductInfo();
         }
     });
 });
@@ -117,7 +119,7 @@ document.getElementById("clearRangeFilter").addEventListener("click", function (
     minPrice = undefined;
     maxPrice = undefined;
 
-    showProductsList();
+    showProductInfo();
 });
 
 document.getElementById("rangeFilterPrice").addEventListener("click", function () {
@@ -139,7 +141,7 @@ document.getElementById("rangeFilterPrice").addEventListener("click", function (
         maxPrice = undefined;
     }
 
-    showProductsList();
+    showProductInfo();
 });
 ;
 
