@@ -1,3 +1,8 @@
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
+
 function showProductInfo(product) {
 
     const htmlContentToAppend = `
@@ -15,6 +20,20 @@ function showProductInfo(product) {
     </div>
       `
     document.getElementById("prod-info-container").innerHTML = htmlContentToAppend;
+
+    const htmlContentToAppend2 = `
+    <div class="row">
+    ${product.relatedProducts.map(rp => `
+    <div onclick="setProdID(${rp.id}); showProductInfo" class="card cursor-active" style="width: 18rem;">
+    <img src="${rp.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">${rp.name}</h5>
+    </div>
+    </div>`).join('')}
+    </div>
+    </div>
+    `
+    document.getElementById("rel-prod-container").innerHTML = htmlContentToAppend2;
 }
 
 function showProductComment(comments) {
