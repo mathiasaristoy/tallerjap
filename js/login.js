@@ -17,7 +17,7 @@ function login() {
 
     if (email === "" || password === "")
         return
-        localStorage.setItem('email', email);
+        sessionStorage.setItem('email', email);
         location.href = 'index.html';
         
     
@@ -35,5 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 })
+
 
 

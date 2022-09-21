@@ -43,7 +43,7 @@ let getJSONData = function(url){
 
  document.addEventListener("DOMContentLoaded", ()=> {
 
-  let email= localStorage.getItem("email");
+  let email= sessionStorage.getItem("email");
   if(!email){
       alert("Debe iniciar sesión para poder continuar en el sitio")
       location.href = "login.html";
@@ -51,3 +51,19 @@ let getJSONData = function(url){
   }    
   document.getElementById('dropdownMenuButton1').innerHTML = email;
 })
+
+const dropdown = `
+
+  
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="cart.html">Carrito </a>
+      <li><a class="dropdown-item" href="my-profile.html">Perfil</a>
+      <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+    </ul>
+  </div>
+ 
+  `
+document.getElementById("dropdownMenu").innerHTML = dropdown;
+
