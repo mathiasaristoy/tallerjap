@@ -36,7 +36,7 @@ function cart(articles) {
 
   
 }}
-// creamos la funcion finalcost donde obtengo el valor del input e itero sobre el array articulos buscando un id. obtenido el objeto, tomamos unitcost y lo multiplicamos por el valor del input. le agregamos onchange al input para que se haga la multiplicacion de forma dinamica
+
   function finalCost (event, articleID){
    
     array.find(article => article.id === articleID)
