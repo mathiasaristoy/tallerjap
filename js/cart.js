@@ -74,6 +74,34 @@ function cart(articles) {
     document.getElementById('finalTotal').innerHTML = finalTotal
   }
 
+  function paymentValidation(){
+    const card = document.getElementById('card');
+    const transfer = document.getElementById('transfer')
+    const inputcard = document.getElementById('cr_no')
+    const inputexp = document.getElementById('exp')
+    const inputcvv = document.getElementById('cvv')
+    const inputacc = document.getElementById('acc_no')
+
+   if (card.checked){
+    inputacc.disabled = true
+    inputcard.disabled = false
+    inputexp.disabled = false
+    inputcvv.disabled = false
+   }
+
+   if(transfer.checked){
+    inputacc.disabled = false
+    inputcard.disabled = true
+    inputexp.disabled = true
+    inputcvv.disabled = true
+   }
+
+  }
+
+  function buy(){
+
+    
+  }
   
   
 
