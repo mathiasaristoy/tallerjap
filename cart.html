@@ -192,11 +192,12 @@
                   onclick="paymentValidation()"
                 /><label for="card">Tarjeta de crédito</label>
                 <hr />
-                  <div class="form-control" id="divcard">
+                  <div id="divcard">
                     <div class="row">
                       <div class="col-7">
                         <p class="text-muted text-sm mb-0">Número de tarjeta</p>
                         <input
+                          class="form-control"
                           type="text"
                           name="card-num"
                           placeholder="0000 0000 0000 0000"
@@ -208,6 +209,7 @@
                         />
                         <p class="text-muted text-sm mb-0">Vencimiento</p>
                         <input
+                        class="form-control"
                           type="text"
                           name="exp"
                           placeholder="MM/YY"
@@ -221,6 +223,7 @@
                       <div class="col-5">
                         <p class="text-muted text-sm mb-0">CVV/CVC</p>
                         <input
+                          class="form-control"
                           type="password"
                           name="cvv"
                           id="cvv"
@@ -242,9 +245,10 @@
                   onclick="paymentValidation()"
                 /><label for="transfer">Transferencia bancaria</label>
                 <hr />
-                  <div class="form-control" id="divtransfer">
+                  <div id="divtransfer">
                     <p class="text-muted text-sm mb-0">Número de cuenta</p>
                     <input
+                      class="form-control"
                       type="text"
                       name="acc-num"
                       placeholder="0000 0000 0000 0000"
@@ -261,7 +265,7 @@
                   type="button"
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
-                  onclick="close()"
+                  id="close"
                 >
                   Cerrar
                 </button>
@@ -298,6 +302,12 @@
         </p>
       </div>
     </footer>
+
+    <div class="alert alert-success fade container-fluid text-center" role="alert" id="alert-success">
+       Compra finalizada con éxito. <br>
+       <a href="cart.html" class="alert-link">Seguir comprando</a> o <a href="index.html" class="alert-link">volver al inicio</a>. 
+    </div>
+    
     <div id="spinner-wrapper">
       <div class="lds-ring">
         <div></div>

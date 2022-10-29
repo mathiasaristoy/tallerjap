@@ -1,3 +1,21 @@
+const street = document.getElementById("street");
+const corner = document.getElementById("corner");
+const door = document.getElementById("door");
+const premium = document.getElementById("premium");
+const express = document.getElementById("express");
+const standard = document.getElementById("standard");
+const card = document.getElementById("card");
+const transfer = document.getElementById("transfer");
+const selectPM = document.getElementById("selectPM");
+const cr_no = document.getElementById("cr_no");
+const exp = document.getElementById("exp");
+const cvv = document.getElementById("cvv");
+const acc_no = document.getElementById("acc_no");
+
+function showAlertSuccess() {
+  document.getElementById("alert-success").classList.add("show");
+}
+
 let array = [];
 let total = 0;
 
@@ -70,122 +88,142 @@ function finalCost(event, articleID) {
 }
 
 function paymentValidation() {
-  const card = document.getElementById("card");
-  const transfer = document.getElementById("transfer");
-  const inputcard = document.getElementById("cr_no");
-  const inputexp = document.getElementById("exp");
-  const inputcvv = document.getElementById("cvv");
-  const inputacc = document.getElementById("acc_no");
-
   if (card.checked) {
-    document.getElementById('paymentmethod').innerHTML = card.value
-    inputacc.disabled = true;
-    inputcard.disabled = false;
-    inputexp.disabled = false;
-    inputcvv.disabled = false;
-  }
+    document.getElementById("paymentmethod").innerHTML = card.value;
+    acc_no.disabled = true;
+    acc_no.value = "";
+    cr_no.disabled = false;
+    exp.disabled = false;
+    cvv.disabled = false;
+    acc_no.classList.remove("is-invalid");
+    acc_no.classList.remove("is-valid");
 
-  if (transfer.checked) {
-    document.getElementById('paymentmethod').innerHTML = transfer.value
-    inputacc.disabled = false;
-    inputcard.disabled = true;
-    inputexp.disabled = true;
-    inputcvv.disabled = true;
-  }
-}
-
-document.getElementById('form').addEventListener("submit", function(event) {
-  event.preventDefault();
-  buy();
-  
-  document.querySelectorAll("input").forEach((input) => {
-    input.onkeyup=() => buy()
-    if (input.type === "radio"){
-      input.onclick=()=>buy ()
+    if (cr_no.value === "") {
+      cr_no.classList.add("is-invalid");
+      cr_no.classList.remove("is-valid");
+    } else {
+      cr_no.classList.add("is-valid");
+      cr_no.classList.remove("is-invalid");
     }
-  })
-});
+
+    if (exp.value === "") {
+      exp.classList.add("is-invalid");
+      exp.classList.remove("is-valid");
+    } else {
+      exp.classList.add("is-valid");
+      exp.classList.remove("is-invalid");
+    }
+
+    if (cvv.value === "") {
+      cvv.classList.add("is-invalid");
+      cvv.classList.remove("is-valid");
+    } else {
+      cvv.classList.add("is-valid");
+      cvv.classList.remove("is-invalid");
+    }}
+
+    if (transfer.checked) {
+      document.getElementById("paymentmethod").innerHTML = transfer.value;
+      acc_no.disabled = false;
+      cr_no.disabled = true;
+      exp.disabled = true;
+      cvv.disabled = true;
+      cr_no.value = "";
+      exp.value = "";
+      cvv.value = "";
+      cr_no.classList.remove("is-valid");
+      cr_no.classList.remove("is-invalid");
+      exp.classList.remove("is-valid");
+      exp.classList.remove("is-invalid");
+      cvv.classList.remove("is-valid");
+      cvv.classList.remove("is-invalid");
+
+      if (acc_no.value === "") {
+        acc_no.classList.add("is-invalid");
+        acc_no.classList.remove("is-valid");
+      } else {
+        acc_no.classList.add("is-valid");
+        acc_no.classList.remove("is-invalid");
+      }
+    }}
 
 function buy() {
-
-  const street = document.getElementById('street');
-  const corner = document.getElementById('corner');
-  const door = document.getElementById('door');
-  const premium = document.getElementById('premium');
-  const express = document.getElementById('express');
-  const standard = document.getElementById('standard');
-  const card = document.getElementById('card');
-  const transfer = document.getElementById('transfer');
-  const selectPM = document.getElementById('selectPM')
-  const cr_no = document.getElementById('cr_no');
-  const exp = document.getElementById('exp');
-  const cvv = document.getElementById('cvv');
-  const acc_no = document.getElementById('acc_no');
-
-  if (street.value === ""){
+  paymentValidation()
+  
+  if (street.value === "") {
     street.classList.add("is-invalid");
     street.classList.remove("is-valid");
-  }else{
+  } else {
     street.classList.add("is-valid");
     street.classList.remove("is-invalid");
   }
 
-  if (corner.value === ""){
+  if (corner.value === "") {
     corner.classList.add("is-invalid");
     corner.classList.remove("is-valid");
-  }else{
+  } else {
     corner.classList.add("is-valid");
     corner.classList.remove("is-invalid");
   }
 
-  if (door.value === ""){
+  if (door.value === "") {
     door.classList.add("is-invalid");
     door.classList.remove("is-valid");
-  }else{
+  } else {
     door.classList.add("is-valid");
     door.classList.remove("is-invalid");
   }
 
-  if(!premium.checked && !express.checked && !standard.checked){
+  if (!premium.checked && !express.checked && !standard.checked) {
     premium.classList.add("is-invalid");
     express.classList.add("is-invalid");
     standard.classList.add("is-invalid");
     premium.classList.remove("is-valid");
     express.classList.remove("is-valid");
     standard.classList.remove("is-valid");
-  }else if(premium.checked){
-    premium.classList.add('is-valid');
+  } else if (premium.checked) {
+    premium.classList.add("is-valid");
     premium.classList.remove("is-invalid");
     express.classList.remove("is-invalid");
     standard.classList.remove("is-invalid");
     express.classList.remove("is-valid");
     standard.classList.remove("is-valid");
-  }else if(express.checked){
-    express.classList.add('is-valid');
+  } else if (express.checked) {
+    express.classList.add("is-valid");
     express.classList.remove("is-invalid");
     premium.classList.remove("is-invalid");
     standard.classList.remove("is-invalid");
     premium.classList.remove("is-valid");
     standard.classList.remove("is-valid");
-  }else if(standard.checked){
-    standard.classList.add('is-valid');
-    standard.classList.remove("is-invalid"); 
+  } else if (standard.checked) {
+    standard.classList.add("is-valid");
+    standard.classList.remove("is-invalid");
     premium.classList.remove("is-invalid");
     express.classList.remove("is-invalid");
     premium.classList.remove("is-valid");
-    express.classList.remove("is-valid");       
+    express.classList.remove("is-valid");
   }
 
-
-  if (!card.checked && !transfer.checked){
+  if (!card.checked && !transfer.checked) {
     selectPM.classList.add("is-invalid");
     selectPM.classList.remove("is-valid");
-  }else if(card.checked){
+  } else if (card.checked) {
     selectPM.classList.remove("is-invalid");
-  }else if(transfer.checked){
+  } else if (transfer.checked) {
     selectPM.classList.remove("is-invalid");
   }
-  
+
+  const ok1 = street !=="" && corner !=="" && door !==""
+  const ok2 = premium.checked || express.checked || standard.checked
+  const ok3 = card.checked && cr_no !=="" && exp !=="" &&  cvv !==""
+  const ok4 = transfer.checked && acc_no !=="" 
+
+
+  if(ok1 && ok2  && ok3){
+    showAlertSuccess()
+  }else if(ok1 && ok2 && ok4){
+    showAlertSuccess()
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -196,6 +234,3 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
   });
 });
-
-
-
