@@ -16,6 +16,21 @@ function showAlertSuccess() {
   document.getElementById("alert-success").classList.add("show");
 }
 
+document.getElementById('form').addEventListener("submit", function(event) {
+  event.preventDefault();
+  buy();
+  
+  
+
+  document.querySelectorAll("input").forEach((input) => {
+    input.onkeyup=() => buy()
+    if (input.type === "checkbox"){
+      input.onclick=()=>buy()
+    }
+  })
+});
+
+
 let array = [];
 let total = 0;
 
@@ -213,17 +228,14 @@ function buy() {
     selectPM.classList.remove("is-invalid");
   }
 
-  const ok1 = street !=="" && corner !=="" && door !==""
+  const ok1 = street.value !=="" && corner.value !=="" && door.value !==""
   const ok2 = premium.checked || express.checked || standard.checked
-  const ok3 = card.checked && cr_no !=="" && exp !=="" &&  cvv !==""
-  const ok4 = transfer.checked && acc_no !=="" 
+  const ok3 = card.checked && cr_no.value !=="" && exp.value !=="" &  cvv.value !==""
+  const ok4 = transfer.checked && acc_no.value !=="" 
 
 
-  if(ok1 && ok2  && ok3){
+  if(ok1 && ok2  && (ok3 || ok4) )
     showAlertSuccess()
-  }else if(ok1 && ok2 && ok4){
-    showAlertSuccess()
-  }
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
