@@ -56,8 +56,8 @@ function cart(articles) {
         <th scope="row"><img src="${article.image}" alt="Product image" width="50" height="auto"></th>
         <td>${article.name}</td>
         <td>${article.currency}   <span id="cost">${article.unitCost}</span></td>
-        <td><input id="input" type="number" min="1" value="${article.count}" onchange="finalCost(this, ${article.id})" </td>
-        <td><strong>${article.currency}</strong> <strong id="finalCost"></strong></td>
+        <td><input id="input" type="number" min="1" value="${article.count}"  onchange="itemCost(this, ${article.id}) ; shippingCost(this, ${article.id})" </td>
+        <td><strong>${article.currency}</strong> <strong id="itemCost"></strong></td>
       </tr>
       </tr>
     </tbody>
@@ -84,23 +84,33 @@ function cart(articles) {
   }
 }
 
-function finalCost(event, articleID) {
+
+
+function itemCost(event, articleID) {
+ 
   array.find((article) => article.id === articleID);
   let cost = array[0].unitCost;
-  let count = event.value;
+  let count = event.value || 1;
   total = parseInt(cost) * parseInt(count);
-  document.getElementById("finalCost").innerHTML = total;
+  console.log(cost,count)
+  document.getElementById("itemCost").innerHTML = total;
   document.getElementById("subtotal").innerHTML = total;
+  
+  
 
+  
+}
+
+function shippingCost(){
   let shippingCost = parseFloat(
-    document.querySelector("input[name=shipping]:checked").value
-  );
+  document.querySelector("input[name=shipping]:checked").value);
   let percentage = shippingCost * total;
   document.getElementById("shippingCost").innerHTML = percentage;
-
   let finalTotal = total + percentage;
   document.getElementById("finalTotal").innerHTML = finalTotal;
+  
 }
+
 
 function paymentValidation() {
   if (card.checked) {
@@ -112,6 +122,7 @@ function paymentValidation() {
     cvv.disabled = false;
     acc_no.classList.remove("is-invalid");
     acc_no.classList.remove("is-valid");
+    
 
     if (cr_no.value === "") {
       cr_no.classList.add("is-invalid");
@@ -228,11 +239,15 @@ function buy() {
     selectPM.classList.remove("is-invalid");
   }
 
+
+ 
+}
+
+function finish(){
   const ok1 = street.value !=="" && corner.value !=="" && door.value !==""
   const ok2 = premium.checked || express.checked || standard.checked
   const ok3 = card.checked && cr_no.value !=="" && exp.value !=="" &  cvv.value !==""
   const ok4 = transfer.checked && acc_no.value !=="" 
-
 
   if(ok1 && ok2  && (ok3 || ok4) )
     showAlertSuccess()
@@ -243,6 +258,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (resultObj.status === "ok") {
       const { articles } = resultObj.data;
       cart(articles);
+      itemCost(Event);
     }
   });
 });
