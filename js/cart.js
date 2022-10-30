@@ -108,97 +108,6 @@ function shippingCost(){
   document.getElementById("shippingCost").innerHTML = percentage;
   let finalTotal = total + percentage;
   document.getElementById("finalTotal").innerHTML = finalTotal;
-  
-}
-
-
-function paymentValidation() {
-  if (card.checked) {
-    document.getElementById("paymentmethod").innerHTML = card.value;
-    acc_no.disabled = true;
-    acc_no.value = "";
-    cr_no.disabled = false;
-    exp.disabled = false;
-    cvv.disabled = false;
-    acc_no.classList.remove("is-invalid");
-    acc_no.classList.remove("is-valid");
-    
-
-    if (cr_no.value === "") {
-      cr_no.classList.add("is-invalid");
-      cr_no.classList.remove("is-valid");
-    } else {
-      cr_no.classList.add("is-valid");
-      cr_no.classList.remove("is-invalid");
-    }
-
-    if (exp.value === "") {
-      exp.classList.add("is-invalid");
-      exp.classList.remove("is-valid");
-    } else {
-      exp.classList.add("is-valid");
-      exp.classList.remove("is-invalid");
-    }
-
-    if (cvv.value === "") {
-      cvv.classList.add("is-invalid");
-      cvv.classList.remove("is-valid");
-    } else {
-      cvv.classList.add("is-valid");
-      cvv.classList.remove("is-invalid");
-    }}
-
-    if (transfer.checked) {
-      document.getElementById("paymentmethod").innerHTML = transfer.value;
-      acc_no.disabled = false;
-      cr_no.disabled = true;
-      exp.disabled = true;
-      cvv.disabled = true;
-      cr_no.value = "";
-      exp.value = "";
-      cvv.value = "";
-      cr_no.classList.remove("is-valid");
-      cr_no.classList.remove("is-invalid");
-      exp.classList.remove("is-valid");
-      exp.classList.remove("is-invalid");
-      cvv.classList.remove("is-valid");
-      cvv.classList.remove("is-invalid");
-
-      if (acc_no.value === "") {
-        acc_no.classList.add("is-invalid");
-        acc_no.classList.remove("is-valid");
-      } else {
-        acc_no.classList.add("is-valid");
-        acc_no.classList.remove("is-invalid");
-      }
-    }}
-
-function buy() {
-  paymentValidation()
-  
-  if (street.value === "") {
-    street.classList.add("is-invalid");
-    street.classList.remove("is-valid");
-  } else {
-    street.classList.add("is-valid");
-    street.classList.remove("is-invalid");
-  }
-
-  if (corner.value === "") {
-    corner.classList.add("is-invalid");
-    corner.classList.remove("is-valid");
-  } else {
-    corner.classList.add("is-valid");
-    corner.classList.remove("is-invalid");
-  }
-
-  if (door.value === "") {
-    door.classList.add("is-invalid");
-    door.classList.remove("is-valid");
-  } else {
-    door.classList.add("is-valid");
-    door.classList.remove("is-invalid");
-  }
 
   if (!premium.checked && !express.checked && !standard.checked) {
     premium.classList.add("is-invalid");
@@ -229,6 +138,102 @@ function buy() {
     premium.classList.remove("is-valid");
     express.classList.remove("is-valid");
   }
+  
+}
+
+
+function paymentValidation() {
+  if (card.checked) {
+    document.getElementById("paymentmethod").innerHTML = card.value;
+    acc_no.disabled = true;
+    acc_no.value = "";
+    cr_no.disabled = false;
+    exp.disabled = false;
+    cvv.disabled = false;
+    acc_no.classList.remove("is-invalid");
+    acc_no.classList.remove("is-valid");
+    
+
+    }
+
+    if (transfer.checked) {
+      document.getElementById("paymentmethod").innerHTML = transfer.value;
+      acc_no.disabled = false;
+      cr_no.disabled = true;
+      exp.disabled = true;
+      cvv.disabled = true;
+      cr_no.value = "";
+      exp.value = "";
+      cvv.value = "";
+      cr_no.classList.remove("is-valid");
+      cr_no.classList.remove("is-invalid");
+      exp.classList.remove("is-valid");
+      exp.classList.remove("is-invalid");
+      cvv.classList.remove("is-valid");
+      cvv.classList.remove("is-invalid");
+
+      
+    }}
+
+function buy() {
+  paymentValidation()
+
+  if (acc_no.value === "") {
+    acc_no.classList.add("is-invalid");
+    acc_no.classList.remove("is-valid");
+  } else {
+    acc_no.classList.add("is-valid");
+    acc_no.classList.remove("is-invalid");
+  }
+  if (cr_no.value === "") {
+    cr_no.classList.add("is-invalid");
+    cr_no.classList.remove("is-valid");
+  } else {
+    cr_no.classList.add("is-valid");
+    cr_no.classList.remove("is-invalid");
+  }
+
+  if (exp.value === "") {
+    exp.classList.add("is-invalid");
+    exp.classList.remove("is-valid");
+  } else {
+    exp.classList.add("is-valid");
+    exp.classList.remove("is-invalid");
+  }
+
+  if (cvv.value === "") {
+    cvv.classList.add("is-invalid");
+    cvv.classList.remove("is-valid");
+  } else {
+    cvv.classList.add("is-valid");
+    cvv.classList.remove("is-invalid");
+  }
+  
+  if (street.value === "") {
+    street.classList.add("is-invalid");
+    street.classList.remove("is-valid");
+  } else {
+    street.classList.add("is-valid");
+    street.classList.remove("is-invalid");
+  }
+
+  if (corner.value === "") {
+    corner.classList.add("is-invalid");
+    corner.classList.remove("is-valid");
+  } else {
+    corner.classList.add("is-valid");
+    corner.classList.remove("is-invalid");
+  }
+
+  if (door.value === "") {
+    door.classList.add("is-invalid");
+    door.classList.remove("is-valid");
+  } else {
+    door.classList.add("is-valid");
+    door.classList.remove("is-invalid");
+  }
+
+ 
 
   if (!card.checked && !transfer.checked) {
     selectPM.classList.add("is-invalid");
