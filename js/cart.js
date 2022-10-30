@@ -11,26 +11,22 @@ const cr_no = document.getElementById("cr_no");
 const exp = document.getElementById("exp");
 const cvv = document.getElementById("cvv");
 const acc_no = document.getElementById("acc_no");
-const qty = document.getElementById('qty')
-
-
+const qty = document.getElementById("qty");
 
 function showAlertSuccess() {
   document.getElementById("alert-success").classList.add("show");
 }
 
-document.getElementById('form').addEventListener("submit", function(event) {
+document.getElementById("form").addEventListener("submit", function (event) {
   event.preventDefault();
   buy();
-  
-  
 
   document.querySelectorAll("input").forEach((input) => {
-    input.onkeyup=() => buy()
-    if (input.type === "checkbox"){
-      input.onclick=()=>buy()
+    input.onkeyup = () => buy();
+    if (input.type === "checkbox") {
+      input.onclick = () => buy();
     }
-  })
+  });
 });
 
 
@@ -59,7 +55,7 @@ function cart(articles) {
         <th scope="row"><img src="${article.image}" alt="Product image" width="50" height="auto"></th>
         <td>${article.name}</td>
         <td>${article.currency}   <span id="cost">${article.unitCost}</span></td>
-        <td><input class="form-control" id="qty" type="number" min="1" value="${article.count}"  onchange="itemCost(this, ${article.id}) ; shippingCost(this, ${article.id})" </td>
+        <td><input id="qty" type="number" min="1"  value="${article.count}"  onchange="itemCost(this, ${article.id}) ; shippingCost(this, ${article.id})" </td>
         <td><strong>${article.currency}</strong> <strong id="itemCost"></strong></td>
       </tr>
       </tr>
@@ -87,26 +83,21 @@ function cart(articles) {
   }
 }
 
-
-
 function itemCost(event, articleID) {
- 
   array.find((article) => article.id === articleID);
   let cost = array[0].unitCost;
   let count = event.value || 1;
   total = parseInt(cost) * parseInt(count);
   document.getElementById("itemCost").innerHTML = total;
-  document.getElementById("subtotal").innerHTML = total; 
-  
-
-  
+  document.getElementById("subtotal").innerHTML = total;
 }
 
-function shippingCost(){
+function shippingCost() {
   let shippingCost = parseFloat(
-  document.querySelector("input[name=shipping]:checked").value);
+    document.querySelector("input[name=shipping]:checked").value
+  );
   let percentage = shippingCost * total;
-  document.getElementById("shippingCost").innerHTML = percentage;
+  document.getElementById("shippingCost").innerHTML = percentage.toFixed(0);
   let finalTotal = total + percentage;
   document.getElementById("finalTotal").innerHTML = finalTotal;
 
@@ -139,9 +130,7 @@ function shippingCost(){
     premium.classList.remove("is-valid");
     express.classList.remove("is-valid");
   }
-  
 }
-
 
 function paymentValidation() {
   if (card.checked) {
@@ -153,31 +142,28 @@ function paymentValidation() {
     cvv.disabled = false;
     acc_no.classList.remove("is-invalid");
     acc_no.classList.remove("is-valid");
-    
+  }
 
-    }
-
-    if (transfer.checked) {
-      document.getElementById("paymentmethod").innerHTML = transfer.value;
-      acc_no.disabled = false;
-      cr_no.disabled = true;
-      exp.disabled = true;
-      cvv.disabled = true;
-      cr_no.value = "";
-      exp.value = "";
-      cvv.value = "";
-      cr_no.classList.remove("is-valid");
-      cr_no.classList.remove("is-invalid");
-      exp.classList.remove("is-valid");
-      exp.classList.remove("is-invalid");
-      cvv.classList.remove("is-valid");
-      cvv.classList.remove("is-invalid");
-
-      
-    }}
+  if (transfer.checked) {
+    document.getElementById("paymentmethod").innerHTML = transfer.value;
+    acc_no.disabled = false;
+    cr_no.disabled = true;
+    exp.disabled = true;
+    cvv.disabled = true;
+    cr_no.value = "";
+    exp.value = "";
+    cvv.value = "";
+    cr_no.classList.remove("is-valid");
+    cr_no.classList.remove("is-invalid");
+    exp.classList.remove("is-valid");
+    exp.classList.remove("is-invalid");
+    cvv.classList.remove("is-valid");
+    cvv.classList.remove("is-invalid");
+  }
+}
 
 function buy() {
-  paymentValidation()
+  paymentValidation();
 
   if (acc_no.value === "") {
     acc_no.classList.add("is-invalid");
@@ -209,7 +195,7 @@ function buy() {
     cvv.classList.add("is-valid");
     cvv.classList.remove("is-invalid");
   }
-  
+
   if (street.value === "") {
     street.classList.add("is-invalid");
     street.classList.remove("is-valid");
@@ -234,8 +220,6 @@ function buy() {
     door.classList.remove("is-invalid");
   }
 
- 
-
   if (!card.checked && !transfer.checked) {
     selectPM.classList.add("is-invalid");
     selectPM.classList.remove("is-valid");
@@ -245,18 +229,47 @@ function buy() {
     selectPM.classList.remove("is-invalid");
   }
 
-
- 
+  if (!premium.checked && !express.checked && !standard.checked) {
+    premium.classList.add("is-invalid");
+    express.classList.add("is-invalid");
+    standard.classList.add("is-invalid");
+    premium.classList.remove("is-valid");
+    express.classList.remove("is-valid");
+    standard.classList.remove("is-valid");
+  } else if (premium.checked) {
+    premium.classList.add("is-valid");
+    premium.classList.remove("is-invalid");
+    express.classList.remove("is-invalid");
+    standard.classList.remove("is-invalid");
+    express.classList.remove("is-valid");
+    standard.classList.remove("is-valid");
+  } else if (express.checked) {
+    express.classList.add("is-valid");
+    express.classList.remove("is-invalid");
+    premium.classList.remove("is-invalid");
+    standard.classList.remove("is-invalid");
+    premium.classList.remove("is-valid");
+    standard.classList.remove("is-valid");
+  } else if (standard.checked) {
+    standard.classList.add("is-valid");
+    standard.classList.remove("is-invalid");
+    premium.classList.remove("is-invalid");
+    express.classList.remove("is-invalid");
+    premium.classList.remove("is-valid");
+    express.classList.remove("is-valid");
+  }
 }
 
-function finish(){
-  const ok1 = street.value !=="" && corner.value !=="" && door.value !==""
-  const ok2 = premium.checked || express.checked || standard.checked
-  const ok3 = card.checked && cr_no.value !=="" && exp.value !=="" &  cvv.value !==""
-  const ok4 = transfer.checked && acc_no.value !=="" 
+function finish() {
+  const ok1 = street.value !== "" && corner.value !== "" && door.value !== "";
+  const ok2 = premium.checked || express.checked || standard.checked;
+  const ok3 =
+    card.checked &&
+    cr_no.value !== "" &&
+    (exp.value !== "") & (cvv.value !== "");
+  const ok4 = transfer.checked && acc_no.value !== "";
 
-  if(ok1 && ok2  && (ok3 || ok4) )
-    showAlertSuccess()
+  if (ok1 && ok2 && (ok3 || ok4)) showAlertSuccess();
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -265,6 +278,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       const { articles } = resultObj.data;
       cart(articles);
       itemCost(Event);
+
     }
   });
 });
