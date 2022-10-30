@@ -11,6 +11,9 @@ const cr_no = document.getElementById("cr_no");
 const exp = document.getElementById("exp");
 const cvv = document.getElementById("cvv");
 const acc_no = document.getElementById("acc_no");
+const qty = document.getElementById('qty')
+
+
 
 function showAlertSuccess() {
   document.getElementById("alert-success").classList.add("show");
@@ -56,7 +59,7 @@ function cart(articles) {
         <th scope="row"><img src="${article.image}" alt="Product image" width="50" height="auto"></th>
         <td>${article.name}</td>
         <td>${article.currency}   <span id="cost">${article.unitCost}</span></td>
-        <td><input id="input" type="number" min="1" value="${article.count}"  onchange="itemCost(this, ${article.id}) ; shippingCost(this, ${article.id})" </td>
+        <td><input class="form-control" id="qty" type="number" min="1" value="${article.count}"  onchange="itemCost(this, ${article.id}) ; shippingCost(this, ${article.id})" </td>
         <td><strong>${article.currency}</strong> <strong id="itemCost"></strong></td>
       </tr>
       </tr>
@@ -92,10 +95,8 @@ function itemCost(event, articleID) {
   let cost = array[0].unitCost;
   let count = event.value || 1;
   total = parseInt(cost) * parseInt(count);
-  console.log(cost,count)
   document.getElementById("itemCost").innerHTML = total;
-  document.getElementById("subtotal").innerHTML = total;
-  
+  document.getElementById("subtotal").innerHTML = total; 
   
 
   
