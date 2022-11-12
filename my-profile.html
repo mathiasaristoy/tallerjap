@@ -52,11 +52,67 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+   
+    <div class="container-xl px-4 mt-4">
+      <div class="row">
+
+          <div class="col-xl-8">
+              
+              <div class="card mb-4">
+                  <div class="card-header">Mi Perfil</div>
+                  <div class="card-body">
+                      <form>
+                          
+                          <div class="mb-3">
+                              <label class="small mb-1" for="inputEmail">Email*</label>
+                              <input class="form-control" id="inputEmail" type="email" placeholder="Ingresa tu Correo Electrónico" >
+                              <div class="invalid-feedback">Debe ingresar un email valido.</div>
+                          </div>
+                          
+                          <div class="row gx-3 mb-3">
+                              
+                              <div class="col-md-6">
+                                  <label class="small mb-1" for="inputName"> Nombre*</label>
+                                  <input class="form-control" id="inputName" type="text" placeholder="Ingresa tu nombre" >
+                                  <div class="invalid-feedback">Debe ingresar un nombre.</div>
+                              </div>
+                              
+                              <div class="col-md-6">
+                                  <label class="small mb-1" for="inputMiddleName">Segundo nombre</label>
+                                  <input class="form-control" id="inputMiddleName" type="text" placeholder="Ingresa tu segundo nombre (opcional)" >
+                              </div>
+                          </div>
+                          
+                          <div class="row gx-3 mb-3">
+                              
+                              <div class="col-md-6">
+                                  <label class="small mb-1" for="inputLastname">Apellido*</label>
+                                  <input class="form-control" id="inputLastname" type="text" placeholder="Ingresa tu apellido" >
+                                  <div class="invalid-feedback">Debe ingresar un apellido.</div>
+                              </div>
+                              
+                              <div class="col-md-6">
+                                  <label class="small mb-1" for="inputeSecondLastname">Segundo apellido</label>
+                                  <input class="form-control" id="inputeSecondLastname" type="text" placeholder="Ingresa tu segundo apellido (opcional)" >
+                              </div>
+                          </div>
+                          
+                          <div class="row gx-3 mb-3">
+                              
+                              <div class="col-md-6">
+                                  <label class="small mb-1" for="inputPhone">Teléfono</label>
+                                  <input class="form-control" id="inputPhone" type="tel" placeholder="Ingresa tu eléfono (opcional)" >
+                              </div>
+                          </div>
+                          
+                          <button class="btn btn-primary" id="saveProfile" type="button">Guardar</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
+  </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
