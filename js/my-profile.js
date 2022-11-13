@@ -27,21 +27,24 @@ function saveProfile() {
     email.classList.remove("is-invalid");
   }
 
-  if (email.value === "" || lastname.value === "" || name.value === "") return;
+  if (email.value === ""  || !regex.test(email.value) || lastname.value === "" || name.value === "") return;
   localStorage.setItem("email", email.value);
   localStorage.setItem("name", name.value);
   localStorage.setItem("lastname", lastname.value);
   localStorage.setItem("middlename", middleName.value);
   localStorage.setItem("secondlastname", secondLastName.value);
   localStorage.setItem("phone", phone.value);
+
+  return true
 }
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("saveProfile").addEventListener("click", () => {
-    saveProfile();
-    location.href = 'my-profile.html'
+   if (saveProfile()===true){
+      location.href = "my-profile.html"}
+    
   });
 });
 
