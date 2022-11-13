@@ -15,7 +15,7 @@ function login() {
 
     
 
-    if (email === "" || password === "")
+    if (email === "" || !regex.test(email) || password === "")
         return
         localStorage.setItem('email', email);
         location.href = 'index.html';
